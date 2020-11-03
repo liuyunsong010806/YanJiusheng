@@ -1,0 +1,84 @@
+
+# 阅读程序
+
+## 一、实验目的<br></br>
+### 实验目的
+  - 掌握Java中抽象类和抽象方法的定义；
+  + 掌握Java中接口的定义，熟练掌握接口的定义形式以及接口的实现方法
+  * 了解异常的使用方法，并在程序中根据输入情况做异常处理
+
+### 基本要求
+  - 设计两个管理接口：学生管理接口和教师管理接口。学生接口必须包括缴纳学费、查学费的方法；教师接口包括发放薪水和查询薪水的方法。
+  + 设计博士研究生类，实现上述的两个接口，该博士研究生应具有姓名、性别、年龄、每学期学费、每月薪水等属性。（其他属性及方法，可自行发挥）
+  * 编写测试类，并实例化至少两名博士研究生，统计他们的年收入和学费。根据两者之差，算出每名博士研究生的年应纳税金额（国家最新工资纳税标准，请自行检索）。
+
+### 附加要求：
+1. 在 博士研究生类中实现各个接口定义的抽象方法;
+2. 对年学费和年收入进行统计，用收入减去学费，求得纳税额；
+3. 国家最新纳税标准（系数），属于某一时期的特定固定值，与实例化对象没有关系，考虑如何用static  final修饰定义。
+4. 实例化研究生类时，可采用运行时通过main方法的参数args一次性赋值，也可采用Scanner类实现运行时交互式输入。
+5. 根据输入情况，要在程序中做异常处理。
+
+## 二、实验过程
+1. 首先按照要求创造两个类
+2. 将两个接口命名为Xuesheng、Jiaoshi。代表了研究生学习交学费和赚得薪水两个身份。
+3. 随后在接口定义了学期学费和月工资两个常量，并定义了抽象类m，f分别用于计算年收入和年学费
+4. 定义一个YanjiuSheng的类。这个类创建构造方法，用于收集主类里面学生姓名、学号、性别、年龄等信息。
+5. 重新定义m，f方法给出了正确的计算方法。总工资=工资x工资月份，总学费=学期学费x学期数。
+6. 定义新方法jingshouru，使总收入-总学费算出工资。
+7. 创建主类Test。添加Scanner用户交互，来方便后面进行手动输入。填写所有的学生包括学号，学生姓名，性别，年龄等信息。
+8. 接下来进行平台交互手动输入工作月份数、学期数。
+9. 通过网上查询税率，来算出税后输入。
+10. 将信息输出
+11. 添加try，catch语句防止在输月份或者学号的时候有人输入字符，如果有人输入变提示！
+12. 系统优化
+
+
+
+## 三、核心方法
+> 将四个主类名字分别命名为People，然后用另外两个类Student，Teacher分别设置为People的子类，并用super（）将父类People中的编号、姓名、性别继承。在输出语句中用toString（）方法。
+>>这是选课的一个小循环语句，将wuli，shuxue，yingyu的1，2，3选项来选择这三个。
+
+```
+int y = in.nextInt();        // Scanner 类来获取用户的输入
+        System.out.println("请输入1,2,3进行选课: ");
+        if (y == 1) {
+            a = wuli;
+            System.out.println("已选课: " + wuli);
+            System.out.println(zhang);
+        } else if (y == 2) {
+            a = shuxue;
+            System.out.println("已选课: " + shuxue);
+            System.out.println(li);
+        } else if (y == 3) {
+            a = yingyu;
+            System.out.println("已选课: " + yingyu);
+            System.out.println(wang);
+        } else {
+            System.out.println("不含该课程");
+        }
+
+```
+>>这一部分我用了toString（）的方法
+
+```
+ int course;
+    Teacher (int number,String name,String sex,int course){
+        super(number,name,sex);
+        this.course=course;
+    }
+        public String toString (){
+            return "教师号:"+number+"\t老师姓名："+name+"\t性别"+sex+"\t 所教课程："+course;
+        }
+```
+## 四、流程图
+![%E5%9B%BE%E7%89%871.png](https://github.com/liuyunsong010806/java-/blob/main/%E5%9B%BE%E7%89%871.png)
+
+## 五、实验结果
+![正确示范.png](https://github.com/liuyunsong010806/YanJiusheng/blob/main/正确示范.png)
+###若果出现错误，比如输入数字的时候输入了字符。则会出现下面这个情况（即会给出提示）
+![错误示范.png](https://github.com/liuyunsong010806/YanJiusheng/blob/main/错误示范.png)
+
+## 六、实验感想
+作为第四次做的java实验，这次我做的时间和困难度都大大降低了，在近两周所学的接口和try，catch函数也有了大致的了解。在实验中，关于变量是形参还是实参还是出现了一些问题。
+比如在重写接口方法时，里面
